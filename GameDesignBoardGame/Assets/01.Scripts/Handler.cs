@@ -23,6 +23,7 @@ public class Handler : MonoBehaviour
     private int answer;
     private int select = -1;
     private bool next = false;
+    private int duppre = -1;
 
     public void nextQ()
     {
@@ -112,7 +113,12 @@ public class Handler : MonoBehaviour
         string str = asset.text;
         char[] sepe = new char[] { '\n' };
         string[] lines = str.Split(sepe);
-        int ran = Random.Range(0, lines.Length);
+        int ran = Random.Range(0, lines.Length-1);
+        while(duppre == ran)
+        {
+            ran = Random.Range(0, lines.Length - 1);
+        }
+        duppre = ran;
         {
             if (lines == null) return;
             else
